@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-      <title>Example</title>
+      <title>Surf Rescue</title>
       <meta name="viewport" content="width=device-width, initial-scale=1">
 
       <!-- Do not add `link` tags-->
@@ -12,6 +12,91 @@
       <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
     </head>
     <body>
-      <h1>Browser Template</h1>
+      <main class="container">
+        <div id="signOutHide" class="col-xl-12">
+          <button id="signOutButton" type="button" class="btn btn-outline-dark" data-toggle="modal"
+            data-target=".bd-example-modal-sm">Menu</button>
+    
+          <div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog modal-auto">
+              <div class="modal-content px-3">
+                <form id='change-password'>
+                  <h5 class="font-weight-normal mt-2">Change Your Password</h5>
+                  <div class="form-group">
+                    <input type="password" name='passwords[old]' class="form-control" 
+                      placeholder="Current Password" required>
+                  </div>
+                  <div class="form-group">
+                    <input type="passwords" name='passwords[new]' class="form-control"
+                      placeholder="New Password" required>
+                  </div>
+                </form>
+                <div id="sign-out" class="modal-footer">
+                  <button type="button" class="btn btn-secondary ml-auto" data-dismiss="modal">Sing-Out</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- End modal -->
+    
+        <div class="row text-center py-4">
+          <div class="col-md-12">
+            <img class="mb-4" src="https://i.imgur.com/Q1cQHLi.jpg" alt="" width="auto" height="200">
+            
+          </div>
+    
+          <div class="col-md-6">
+            <form id='sign-up' class="form-signin">
+              <h1 class="h3 mb-3 font-weight-normal">Sign up</h1>
+    
+              <label for="credentials[email]" class="sr-only">Email address</label>
+              <input type="email" name='credentials[email]' class="form-control" placeholder="Email address" required
+                autofocus>
+    
+              <label for="credentials[password]" class="sr-only">Password</label>
+              <input type="password" name='credentials[password]' class="form-control" placeholder="Password" required>
+    
+              <label for="credentials[password_confirmation]" class="sr-only">Confirm password</label>
+              <input type="password" name='credentials[password_confirmation]' class="form-control" placeholder="Password"
+                required>
+    
+              <button class="btn btn-lg btn-primary btn-block" type="submit">Sign up</button>
+            </form>
+          </div>
+    
+          <div class="col-md-6">
+            <form id='sign-in' class="form-signin">
+              <h1 class="h3 mb-3 font-weight-normal ">Sign in</h1>
+    
+              <label for="credentials[email]" class="sr-only">Email address</label>
+              <input type="email" name='credentials[email]' class="form-control" placeholder="Email address" required
+                autofocus>
+    
+              <label for="credentials[password]" class="sr-only">Password</label>
+    
+              <input type="password" name='credentials[password]' class="form-control" placeholder="Password" required>
+    
+              <div class="checkbox mb-2">
+                <label>
+                  <input type="checkbox" value="remember-me"> Remember me
+                </label>
+              </div>
+              <button class="btn btn-lg btn-dark btn-block" type="submit">Sign in</button>
+            </form>
+          </div>
+    
+          <section id="display-message" class="col-12">
+            <div id='error-message' class='failure'></div>
+            <div id='success-message' class='success'></div>
+          </section>
+    
+          <!-- footer -->
+          <div class="col-xl-12">
+            <p class="mt-5 mb-3 text-muted">Thiago Bardini &copy; 2021</p>
+          </div>
+    
+      </main>
     </body>
 </html>
