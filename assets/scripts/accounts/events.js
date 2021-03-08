@@ -7,9 +7,25 @@ const onCreateAccount = function (event) {
   event.preventDefault();
   const form = event.target;
   const data = getFormFields(form);
+  console.log("data is ", data);
+  console.log("store is ", store);
+  data.account.owner = store.user._id;
 
   api.createAccount(data).then(ui.signUpSuccess).catch(ui.signUpFailure);
 };
+
+const onGetAccounts = function(event) {
+  event.preventDefault();
+  store.accountsShow = !store.accountsShow
+  api.getAccounts().then((response) => {
+    console.log(response)
+    store.accountsShow ? ui.showAllAccounts(response) : ui.hideAllAccounts();
+
+  })
+  .catch(err => err)
+}
+  
+
 
 // const onSignIn = function (event) {
 //   event.preventDefault();
@@ -47,5 +63,6 @@ const onCreateAccount = function (event) {
 // };
 
 module.exports = {
-
+  onCreateAccount,
+  onGetAccounts
 };

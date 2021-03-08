@@ -2,17 +2,26 @@ const config = require('../config')
 const store = require('../store')
 
 const createAccount = function (data) {
-   console.log('data is ', data)
-   console.log('store is ', store)
-
    return $.ajax({
       method: 'POST',
       url: `${config.apiUrl}/accounts`,
       headers: {
          Authorization: 'Bearer ' + store.user.token
-      }
+      },
+      data: data
    })
 }
+
+const getAccounts = () => {
+  return $.ajax({
+    url: `${config.apiUrl}/accounts/`,
+    method: 'GET',
+    headers: {
+      Authorization: `Bearer ${store.user.token}`
+    }
+  })
+}
+
 
 // const updateGame = (data) => {
 //   return $.ajax({
@@ -26,16 +35,7 @@ const createAccount = function (data) {
 // }
 
 
-// const getAllGames = () => {
-//   console.log('got games')
-//   return $.ajax({
-//     url: `${config.apiUrl}/games/`,
-//     method: 'GET',
-//     headers: {
-//       Authorization: `Bearer ${store.user.token}`
-//     }
-//   })
-// }
+
 
 // const viewGames = () => {
 //   console.log('got games') // XXX delete
@@ -49,6 +49,7 @@ const createAccount = function (data) {
 // }
 
 module.exports = {
-   createAccount
+   createAccount,
+   getAccounts
 
 }

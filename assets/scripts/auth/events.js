@@ -23,7 +23,7 @@ const onSignIn = function (event) {
     .then((response) => {
       console.log("response from api is ", response);
       console.log("store object originally is ", JSON.stringify(store));
-
+      store.accountsShow = false
       store.user = response.user;
       ui.signInSuccess();
     })
