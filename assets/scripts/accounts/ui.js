@@ -17,13 +17,21 @@ const showAllAccounts = function (res) {
 
 };
 
+const hideCreateAccountForm =  function () {
+  $("#createAccount").hide()
+}
 
 const hideAllAccounts = function () {
   $("#accountList").hide()
 //   $('#accountList').html("")
 };
 
+// const createAccountSuccess = function {
+//   $("#createAccount").hide()
+// }
+
 module.exports = {
    showAllAccounts,
-   hideAllAccounts
+   hideAllAccounts,
+   hideCreateAccountForm
 }

@@ -11,8 +11,23 @@ const onCreateAccount = function (event) {
   console.log("store is ", store);
   data.account.owner = store.user._id;
 
-  api.createAccount(data).then(ui.signUpSuccess).catch(ui.signUpFailure);
+  api.createAccount(data).then( (response) => {
+    console.log(response);
+    // ui.createAccountSuccess()
+  })
+  .catch(ui.createAccountFailure);
 };
+
+const onGetAccountById = function(event) {
+  event.preventDefault();
+  // console.log(accountId)
+  console.log(store.user._id)
+  // console.log(store.account.owner)
+  api.getAccountById(store.user._id)
+  .then(ui.showAccountId)
+  .catch(err => err)
+}
+  
 
 const onGetAccounts = function(event) {
   event.preventDefault();
@@ -24,45 +39,9 @@ const onGetAccounts = function(event) {
   })
   .catch(err => err)
 }
-  
-
-
-// const onSignIn = function (event) {
-//   event.preventDefault();
-//   // get data from html form
-//   const form = event.target;
-//   const data = getFormFields(form);
-
-//   // send data to api for sign up
-//   api
-//     .signIn(data)
-//     .then((response) => {
-//       console.log("response from api is ", response);
-//       console.log("store object originally is ", JSON.stringify(store));
-
-//       store.user = response.user;
-//       ui.signInSuccess();
-//     })
-//     .catch(ui.signInFailure);
-// };
-
-// const onChangePassword = function (event) {
-//   event.preventDefault();
-//   const form = event.target;
-//   const data = getFormFields(form);
-
-//   api
-//     .changepw(data)
-//     .then(ui.changePasswordSuccess)
-//     .catch(ui.changePasswordFailure);
-// };
-
-// const onSignOut = function (event) {
-//   event.preventDefault();
-//   api.signOut().then(ui.signOutSuccess).catch(ui.signOutFailure);
-// };
 
 module.exports = {
   onCreateAccount,
-  onGetAccounts
+  onGetAccounts,
+  onGetAccountById
 };

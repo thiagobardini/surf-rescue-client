@@ -93,51 +93,58 @@
         <div id='success-message' class='success'></div>
       </section>
 
+      <div class="container my-5">
+        <div class="row">
+          <div class="col-4">
+            <form id='createAccount'>
+              <h1 class="h3 font-weight-normal ">Create Account</h1>
 
+              <label for="account[name]" class="sr-only">name</label>
+              <input type="text" name='account[name]' class="form-control" placeholder="Type your Name" required>
 
-      <section>
+              <label for="account[hometown]" class="sr-only">hometown</label>
+              <input type="text" name='account[hometown]' class="form-control" placeholder="hometown" required>
 
-        <div>
-          <form id='createAccount' class="form-signin">
-            <h1 class="h3 mb-3 font-weight-normal ">Create Account</h1>
+              <label for="account[surfLevel]" class="sr-only">Surf Level</label>
+              <input type="text" name='account[surfLevel]' class="form-control" placeholder="Surf Level" required>
 
-            <label for="account[name]" class="sr-only">name</label>
-            <input type="text" name='account[name]' class="form-control" placeholder="Type your Name" required>
+              <label for="account[avgBudgetDay]" class="sr-only">avgBudgetDay</label>
+              <input type="text" name='account[avgBudgetDay]' class="form-control" placeholder="avgBudgetDay" required>
 
-            <label for="account[hometown]" class="sr-only">hometown</label>
-            <input type="text" name='account[hometown]' class="form-control" placeholder="hometown" required>
+              <label for="account[waveRange]" class="sr-only">waveRange</label>
+              <input type="text" name='account[waveRange]' class="form-control" placeholder="waveRange" required>
 
+              <label for="account[stance]" class="sr-only">Stance</label>
+              <input type="text" name='account[stance]' class="form-control" placeholder="stance" required>
 
-            <label for="account[surfLevel]" class="sr-only">Surf Level</label>
-            <input type="text" name='account[surfLevel]' class="form-control" placeholder="Surf Level" required>
+              <button class="btn btn-lg btn-dark btn-block" type="submit">Create account</button>
+            </form>
+          
+            
 
-            <label for="account[avgBudgetDay]" class="sr-only">avgBudgetDay</label>
-            <input type="text" name='account[avgBudgetDay]' class="form-control" placeholder="avgBudgetDay" required>
+          </div>
 
-            <label for="account[waveRange]" class="sr-only">waveRange</label>
-            <input type="text" name='account[waveRange]' class="form-control" placeholder="waveRange" required>
-
-            <label for="account[stance]" class="sr-only">Stance</label>
-            <input type="text" name='account[stance]' class="form-control" placeholder="stance" required>
-
-
-            <button  class="btn btn-lg btn-dark btn-block" type="submit">Create account</button>
-          </form>
+          <div class="col-8">
+            <h3 class="font-weight-normal">Show Accounts</h3>
+            <button id="showAccounts" class="my-2">toggle</button>
+            <div id="accountList"></div>
+          </div>
+          
         </div>
+      </div>
 
-
+      <section class="col-12 my-5">
+        <h1>Account ID</h1>
+        <button id="accountId">toggle</button>
+        <div id="accountShow"></div>
       </section>
 
-      <section>
-        <div>
-          <h1>Show Accounts</h1>
-          <button id="showAccounts" >toggle</button>
-          <div id="accountList"></div>
-        </div>
-      </section>
-
-
-
+      
+      <div class="col-12">
+        <h3 class="font-weight-normal">Show Places</h3>
+        <button id="showPlaces" class="my-2">toggle</button>
+        <div id="placeList"></div>
+      </div>
 
 
       <!-- footer -->

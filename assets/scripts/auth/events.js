@@ -2,6 +2,8 @@ const getFormFields = require("../../../lib/get-form-fields");
 const api = require("./api");
 const ui = require("./ui");
 const store = require("../store");
+const apiAccounts = require("../accounts/api.js");
+const uiAccounts = require("../accounts/ui.js");
 
 const onSignUp = function (event) {
   event.preventDefault();
@@ -23,9 +25,24 @@ const onSignIn = function (event) {
     .then((response) => {
       console.log("response from api is ", response);
       console.log("store object originally is ", JSON.stringify(store));
-      store.accountsShow = false
+      store.accountsShow = false;
       store.user = response.user;
       ui.signInSuccess();
+    })
+    .then(() => {
+      apiAccounts
+        .getAccounts()
+        .then((response) => {
+          // Os valores q estao dentro de if sao convertidos boaleanos usando legnth
+          // Type coercion
+          // 0 = false -> nao tem conta 
+          // 1 = true -> tem conta
+          if(response.accounts.length) {
+          uiAccounts.hideCreateAccountForm()
+          }
+          console.log(response);
+        })
+        .catch((err) => err);
     })
     .catch(ui.signInFailure);
 };
