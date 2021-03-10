@@ -10,7 +10,7 @@ const showAllPlaces = function (placeList) {
         <p>Place ID: ${place._id}</p>
         <p>Local Name: ${place.localName}</p>
         <p>Country: ${place.country}</p>
-        <img src="${place.localImg}" alt="">
+        <img src="${place.localImg}" alt="" width="auto" height="300">
         <p>Description: ${place.description}</p>
         <p>surfLevel: ${place.surfLevel}</p>
         <p>Average Cost Day: US$${place.avgCostDay}</p>
@@ -26,6 +26,14 @@ const showAllPlaces = function (placeList) {
               <input type="text" name="review[content]" placeholder="Enter new content" required>
               <input type="text" name="review[stars]" placeholder="Enter new stars" required><br>
               <button type="submit" btn btn-primary">Create Review</button>
+              <button type="submit" btn btn-primary">Delete Review</button>
+              <button type="submit" btn btn-primary">Update Review</button>
+            </form>
+            <form class="delete-review" >
+         
+              <input type="text" name="review[_id]" placeholder="Enter the id for remove" required><br>
+              <button type="submit" btn btn-primary">Delete Review</button>
+              
             </form>
           </div>
 
