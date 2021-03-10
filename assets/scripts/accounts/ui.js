@@ -16,11 +16,11 @@ const showAllAccounts = function (res) {
 
         <h4>Update your Account</h4>
         <form class="account-update-dynamic" data-id=${account._id}>
-        <input type="text" name="account[name]" placeholder="Enter new name" required>
-        <input type="text" name="account[hometown]" placeholder="Enter new hometown" required>
-        <input type="text" name="account[avgBudgetDay]" placeholder="Enter average budget day" required>
-        <input type="text" name="account[waveRange]" placeholder="Enter new hometown" required>
-        <input type="text" name="account[stance]" placeholder="Enter new stance" required><br>
+        <input type="text" name="account[name]" placeholder="New name" required>
+        <input type="text" name="account[hometown]" placeholder="New hometown" required>
+        <input type="text" name="account[avgBudgetDay]" placeholder="New avg. budget day" required>
+        <input type="text" name="account[waveRange]" placeholder="New wave range" required>
+        <input type="text" name="account[stance]" placeholder="New stance" required><br>
         <button type="submit" class="index-dynamic-button btn btn-primary">Update Account</button>
       </form>
         <hr>
