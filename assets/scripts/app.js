@@ -2,6 +2,7 @@
 const authEvents = require('./auth/events')
 const accountEvents = require('./accounts/events')
 const placesEvents = require('./places/events')
+const reviewEvents = require('./reviews/events')
 
 // use require with a reference to bundle the file and use it in this file
 // const example = require('./example')
@@ -13,6 +14,7 @@ $(() => {
   $('#change-password').hide()
   $('#sign-out').hide()
   $('#signOutHide').hide()
+  $('#hideContent').hide()
 
 
   $('#sign-up').on('submit', authEvents.onSignUp)
@@ -21,7 +23,17 @@ $(() => {
   $('#sign-out').on('click', authEvents.onSignOut)
   $('#createAccount').on('submit', accountEvents.onCreateAccount)
   $('#showAccounts').on('click', accountEvents.onGetAccounts)
-  $('#accountId').on('click', accountEvents.onGetAccountById)
 
-  $('#showPlaces').on('click', placesEvents.onGetPlaces)
+  // $('.accountDestroy-display').on('click', accountEvents.onGetAccounts)
+  
+  $('#account-destroy').on('click', '.account-destroy-dynamic', accountEvents.onDestroyAccount)
+  $('#account-display').on('submit', '.account-update-dynamic', accountEvents.onUpdateAccount)
+   
+   
+    $('.create-review').on('submit', reviewEvents.onCreateReview)
+  // $('#accountId').on('click', accountEvents.onGetAccountById)
+
+  
+
+  
 })

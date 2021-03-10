@@ -3,12 +3,13 @@ const api = require("./api");
 const ui = require("./ui");
 const store = require("../store");
 
-const onGetPlaces = function(event) {
-  event.preventDefault();
-  store.placesShow = !store.placesShow
+const onGetPlaces = function() {
   api.getPlaces().then((response) => {
     console.log(response)
-    store.placesShow ? ui.showAllPlaces(response) : ui.hideAllPlaces();
+    const placeList = Array.from(response.places)
+    store.placeList = placeList
+    // store.placesShow ? ui.showAllPlaces(placeList) : ui.hideAllPlaces();
+    ui.showAllPlaces(placeList)
 
   })
   .catch(err => err)

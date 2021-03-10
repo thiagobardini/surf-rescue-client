@@ -23,8 +23,13 @@ const signInSuccess = function (response) {
   $('#sign-in').hide()
   $('#change-password').show()
   $('#sign-out').show()
-  $('#game-controls').show()
+  
   $('#signOutHide').show()
+  $('#hideContent').show()
+  $('#showAccounts').trigger('click');
+  $('#createAccount').show()
+  
+
   
   $('#success-message').text('Thank you for signing in').addClass('.success')
   $('#sign-in').trigger('reset')
@@ -62,15 +67,12 @@ const changePasswordFailure = function (response) {
 const signOutSuccess = function () {
   // hide events
   $('#sign-out').hide()
-  $("#viewGameBoard").hide();
-
+  $('#hideContent').hide()
+ 
   $('#change-password').hide()
   // show sign-in and sign-up
   $('#sign-in').show()
   $('#sign-up').show()
-  // hide game
-  $('#game-controls').hide()
-  $('#frame').hide()
   $("#signOutHide").hide()
 
   $('#success-message').text('See you soon!').addClass('.success')

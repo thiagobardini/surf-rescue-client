@@ -11,17 +11,6 @@ const getAccounts = () => {
   })
 }
 
-const getAccountById = () => {
-  console.log(`Teste ${store.user._id}`)
-  return $.ajax({
-    url: `${config.apiUrl}/accounts/${store.user._id}`,
-    method: 'GET',
-    headers: {
-      Authorization: `Bearer ${store.user.token}`
-    }
-  })
-}
-
 const createAccount = function (data) {
    return $.ajax({
       method: 'POST',
@@ -33,9 +22,9 @@ const createAccount = function (data) {
    })
 }
 
-const updateGame = (data) => {
+const updateAccount = function (id, data) {
   return $.ajax({
-    url: `${config.apiUrl}/games/${store.game._id}`,
+    url: config.apiUrl + '/accounts/' + id,
     method: 'PATCH',
     headers: {
       Authorization: `Bearer ${store.user.token}`
@@ -46,21 +35,19 @@ const updateGame = (data) => {
 
 
 
-
-// const viewGames = () => {
-//   console.log('got games') // XXX delete
-//   return $.ajax({
-//     url: `${config.apiUrl}/games/`,
-//     method: 'GET',
-//     headers: {
-//       Authorization: `Bearer ${store.user.token}`
-//     }
-//   })
-// }
+const destroyAccount = function (id) {
+  return $.ajax({
+    url: config.apiUrl + '/accounts/' + id,
+    method: 'DELETE',
+    headers: {
+      Authorization: 'Bearer ' + store.user.token
+    }
+  })
+}
 
 module.exports = {
    createAccount,
    getAccounts,
-   getAccountById
+   updateAccount
 
 }

@@ -4,6 +4,7 @@ const ui = require("./ui");
 const store = require("../store");
 const apiAccounts = require("../accounts/api.js");
 const uiAccounts = require("../accounts/ui.js");
+const placesEvents = require("../places/events.js");
 
 const onSignUp = function (event) {
   event.preventDefault();
@@ -28,6 +29,7 @@ const onSignIn = function (event) {
       store.accountsShow = false;
       store.user = response.user;
       ui.signInSuccess();
+      placesEvents.onGetPlaces()
     })
     .then(() => {
       apiAccounts
@@ -38,7 +40,7 @@ const onSignIn = function (event) {
           // 0 = false -> nao tem conta 
           // 1 = true -> tem conta
           if(response.accounts.length) {
-          uiAccounts.hideCreateAccountForm()
+            uiAccounts.hideCreateAccountForm()
           }
           console.log(response);
         })
@@ -67,5 +69,5 @@ module.exports = {
   onSignUp,
   onSignIn,
   onChangePassword,
-  onSignOut,
+  onSignOut
 };

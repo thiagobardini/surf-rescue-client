@@ -1,18 +1,21 @@
-// const config = require('../config')
-// const store = require('../store')
+const config = require('../config')
+const store = require('../store')
 
-// const createAccount = function (data) {
-//    console.log('data is ', data)
-//    console.log('store is ', store)
 
-//    return $.ajax({
-//       method: 'POST',
-//       url: `${config.apiUrl}/accounts`,
-//       headers: {
-//          Authorization: 'Bearer ' + store.user.token
-//       }
-//    })
-// }
+
+
+const createReview = function (data) {
+   console.log('data is ', data)
+   console.log('store is ', store)
+
+   return $.ajax({
+      method: 'POST',
+      url: `${config.apiUrl}/places/${store.place._id}/reviews`,
+      headers: {
+         Authorization: 'Bearer ' + store.user.token
+      }
+   })
+}
 
 // // const updateGame = (data) => {
 // //   return $.ajax({
@@ -48,7 +51,7 @@
 // //   })
 // // }
 
-// module.exports = {
-//    createGame
+module.exports = {
+   createReview
 
-// }
+}

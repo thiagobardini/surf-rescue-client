@@ -11,37 +11,62 @@ const onCreateAccount = function (event) {
   console.log("store is ", store);
   data.account.owner = store.user._id;
 
-  api.createAccount(data).then( (response) => {
-    console.log(response);
-    // ui.createAccountSuccess()
-  })
-  .catch(ui.createAccountFailure);
+  api.createAccount(data)
+    .then((response) => {
+      console.log(response);
+      // ui.createAccountSuccess()
+      ui.showAllAccounts()
+    })
+    // .then(ui.createAccountSuccess)
+    .catch(ui.createAccountFailure);
 };
 
-const onGetAccountById = function(event) {
+const onUpdateAccount = function (event) {
   event.preventDefault();
-  // console.log(accountId)
-  console.log(store.user._id)
-  // console.log(store.account.owner)
-  api.getAccountById(store.user._id)
-  .then(ui.showAccountId)
-  .catch(err => err)
-}
-  
+  const updateForm = event.target;
+  const id = $(updateForm).data("id");
+  const formData = getFormFields(event.target);
 
-const onGetAccounts = function(event) {
+  // make API call to update one book with the data we grabbed from the form
+  api
+    .updateAccount(id, formData)
+    // if the API call is successful then invoke the onUpdateSuccess function
+    .then(() => {
+      api.getAccounts().then((response) => {
+        console.log(response);
+        store.accountsShow
+          ? ui.showAllAccounts(response)
+          : ui.hideAllAccounts();
+      });
+      ui.onUpdateAccountSuccess();
+    })
+
+    // if the API call fails then run our onError function
+    .catch(ui.onAccountFailure);
+};
+
+const onGetAccounts = function (event) {
   event.preventDefault();
-  store.accountsShow = !store.accountsShow
-  api.getAccounts().then((response) => {
-    console.log(response)
-    store.accountsShow ? ui.showAllAccounts(response) : ui.hideAllAccounts();
+  store.accountsShow = !store.accountsShow;
+  api
+    .getAccounts()
+    .then((response) => {
+      console.log(response);
+      store.accountsShow ? ui.showAllAccounts(response) : ui.hideAllAccounts();
+    })
+    .catch((err) => err);
+};
 
-  })
-  .catch(err => err)
+const onDestroyAccount = function (event) {
+  api.destroyAccount(store.account._id)
+    .then(ui.onDestroyAccountSuccess)
+    .catch(ui.onDestroyAccountFailure)
 }
+
 
 module.exports = {
   onCreateAccount,
   onGetAccounts,
-  onGetAccountById
+  onUpdateAccount,
+  onDestroyAccount
 };
