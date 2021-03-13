@@ -50,15 +50,14 @@ const onSignIn = function (event) {
 };
 
 const onChangePassword = function (event) {
-  event.preventDefault();
-  const form = event.target;
-  const data = getFormFields(form);
+  event.preventDefault()
+  const form = event.target
+  const data = getFormFields(form)
 
-  api
-    .changepw(data)
+  api.changepw(data)
     .then(ui.changePasswordSuccess)
-    .catch(ui.changePasswordFailure);
-};
+    .catch(ui.changePasswordFailure)
+}
 
 const onSignOut = function (event) {
   event.preventDefault();
