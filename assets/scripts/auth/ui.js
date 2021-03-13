@@ -26,7 +26,6 @@ const signInSuccess = function (response) {
   
   $('#signOutHide').show()
   $('#hideContent').show()
-  $('#showAccounts').trigger('click');
   $('#createAccount').show()
   
 

@@ -15,7 +15,6 @@ const onCreateReview = function (event) {
     .createReview()
     .then((response) => {
       console.log(response);
-      //  store.placesShow ? ui.showAllPlaces(response) : ui.hideAllPlaces();
     })
     .catch((err) => err);
 };

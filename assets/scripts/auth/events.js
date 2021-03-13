@@ -2,8 +2,6 @@ const getFormFields = require("../../../lib/get-form-fields");
 const api = require("./api");
 const ui = require("./ui");
 const store = require("../store");
-const apiAccounts = require("../accounts/api.js");
-const uiAccounts = require("../accounts/ui.js");
 const placesEvents = require("../places/events.js");
 
 const onSignUp = function (event) {
@@ -29,23 +27,9 @@ const onSignIn = function (event) {
       store.accountsShow = false;
       store.user = response.user;
       ui.signInSuccess();
-      placesEvents.onGetPlaces()
+      placesEvents.onGetAllPlaces()
     })
-    .then(() => {
-      apiAccounts
-        .getAccounts()
-        .then((response) => {
-          // Os valores q estao dentro de if sao convertidos boaleanos usando legnth
-          // Type coercion
-          // 0 = false -> nao tem conta 
-          // 1 = true -> tem conta
-          if(response.accounts.length) {
-            uiAccounts.hideCreateAccountForm()
-          }
-          console.log(response);
-        })
-        .catch((err) => err);
-    })
+
     .catch(ui.signInFailure);
 };
 

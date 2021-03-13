@@ -1,4 +1,5 @@
-const reviewEvents = require('../reviews/events')
+const placeEvents = require("./events.js");
+const store = require('../store')
 
 
 const showAllPlaces = function (placeList) {
@@ -17,32 +18,9 @@ const showAllPlaces = function (placeList) {
         <p>Wave Range: ${place.waveRange}ft</p>
         <p>Great for: ${place.stance}</p>
         <p>Reviews: ${place.reviews}</p>
-                  
-   
-
-         <div>
-            <form class="create-review"  class="review-create-dynamic" data-id=${place._id}>
-              <input type="text" name="review[title]" placeholder="Enter new title" required>
-              <input type="text" name="review[content]" placeholder="Enter new content" required>
-              <input type="text" name="review[stars]" placeholder="Enter new stars" required><br>
-              <button type="submit" btn btn-primary">Create Review</button>
-              <button type="submit" btn btn-primary">Delete Review</button>
-              <button type="submit" btn btn-primary">Update Review</button>
-            </form>
-            <form class="delete-review" >
-         
-              <input type="text" name="review[_id]" placeholder="Enter the id for remove" required><br>
-              <button type="submit" btn btn-primary">Delete Review</button>
-              
-            </form>
-          </div>
-
-
       </div>
     `;
   }
-  $('#review-display').show()
-  $('#review-display').html(storyHTML2)
   $("#placeList").html(storyHTML2);
 
   // $('.create-review').on('submit', '.review-create-dynamic', reviewEvents.onCreateReview)
@@ -52,7 +30,27 @@ const hideAllPlaces = function () {
   $("#placeList").hide();
 };
 
+const createPlaceSuccess = (response) => {
+  store.place = response.place;
+  placesEvents.onGetAllPlaces()
+    $('#showPlaces').trigger()
+  
+
+
+  // $("#success-message").text("Thank you for signing in").addClass(".success");
+  // $("#   ").trigger("reset");
+  // setTimeout(function () {
+  //   $("#success-message").text("").removeClass("success");
+  // }, 4000);
+};
+
+const createPlaceFailure = (response) => {
+  console.error(response)
+} 
+
 module.exports = {
   showAllPlaces,
   hideAllPlaces,
+  createPlaceSuccess,
+  createPlaceFailure
 };

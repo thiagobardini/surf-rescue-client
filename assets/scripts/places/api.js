@@ -11,8 +11,19 @@ const getPlaces = () => {
   })
 }
 
+const createPlace = (data) => {
+  return $.ajax({
+    method: 'POST',
+    url: `${config.apiUrl}/places`,
+    headers: {
+      Authorization: `Bearer ${store.user.token}`
+    },
+    data: data
+  })
+}
 
 
 module.exports = {
-   getPlaces
+   getPlaces,
+   createPlace
 }
