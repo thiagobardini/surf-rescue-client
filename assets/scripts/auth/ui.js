@@ -23,22 +23,19 @@ const signInSuccess = function (response) {
   $('#sign-in').hide()
   $('#change-password').show()
   $('#sign-out').show()
-  
   $('#signOutHide').show()
   $('#hideContent').show()
-  $('#createAccount').show()
   
-
-  
-  $('#success-message').text('Thank you for signing in').addClass('.success')
-  $('#sign-in').trigger('reset')
+    $('#success-message').text('Thank you for signing in').addClass('.success')
+  // this resets (clears) every form on the page
+  $('form').trigger('reset')
   setTimeout(function () {
     $('#success-message').text('').removeClass('success')
   }, 4000)
 }
 
 const signInFailure = function (response) {
-  $('#error-message').text('Sign in failed, try again').addClass('.failure')
+  $('#error-message').text('Sign in failed, try again!').addClass('.failure')
   $('#sign-in').trigger('reset')
 
   setTimeout(function () {
@@ -47,10 +44,10 @@ const signInFailure = function (response) {
 }
 
 const changePasswordSuccess = function (response) {
-  $('#success-message').text('PW successfully changed').addClass('.success')
+  $('#success-message').text('Password successfully changed').addClass('.success')
   $('#change-password').trigger('reset')
   setTimeout(function () {
-    $('#success-message').text('').removeClass('success')
+  $('#success-message').text('').removeClass('success')
   }, 4000)
 }
 
@@ -75,7 +72,7 @@ const signOutSuccess = function () {
   $("#signOutHide").hide()
 
   $('#success-message').text('See you soon!').addClass('.success')
-
+  $('form').trigger('reset')
   setTimeout(function () {
     $('#success-message').text('').removeClass('success')
   }, 4000)
@@ -83,8 +80,7 @@ const signOutSuccess = function () {
 
 const signOutFailure = function (response) {
   $('#error-message').text('Sign out failed, try again').addClass('.failure')
-  $('#sign-in').trigger('reset')
-
+  
   setTimeout(function () {
     $('#error-message').text('').removeClass('failure')
   }, 4000)

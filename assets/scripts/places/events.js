@@ -3,17 +3,24 @@ const api = require("./api");
 const ui = require("./ui");
 const store = require("../store");
 
-const onGetAllPlaces = () => {
-  api.getPlaces()
-  .then((response) => {
-    console.log(response)
-    const placeList = Array.from(response.places)
-    store.placeList = placeList
-    // store.placesShow ? ui.showAllPlaces(placeList) : ui.hideAllPlaces();
-    ui.showAllPlaces(placeList)
-  })
-  .catch(err => err)
+// const onGetAllPlaces = () => {
+//   api.getPlaces()
+//   .then((response) => {
+//     console.log(response)
+//     const placeList = Array.from(response.places)
+//     store.placeList = placeList
+//     // store.placesShow ? ui.showAllPlaces(placeList) : ui.hideAllPlaces();
+//     ui.showAllPlaces(placeList)
+//   })
+//   .catch(err => err)
+// }
+
+const onGetAllPlaces = (event) => {
+  api.getAllPlaces()
+    .then(ui.showAllPlacesSuccess)
+    .catch(ui.showPlacesFailure)
 }
+
 
 const onCreatePlace = (event) => {
   event.preventDefault()

@@ -23,7 +23,7 @@ $(() => {
   // $('#showAccounts').on('click', accountEvents.onGetAccounts)
 
   $('#createPlace').on('submit', placeEvents.onCreatePlace)
- $('#showPlaces').on('click', placeEvents.onShowAllPlaces)
+  $('#showPlaces').on('click', placeEvents.onGetAllPlaces)
   // $('.accountDestroy-display').on('click', accountEvents.onGetAccounts)
   
   // $('#account-destroy').on('click', '.account-destroy-dynamic', accountEvents.onDestroyAccount)

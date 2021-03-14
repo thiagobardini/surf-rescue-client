@@ -27,7 +27,7 @@ const onSignIn = function (event) {
       store.accountsShow = false;
       store.user = response.user;
       ui.signInSuccess();
-      placesEvents.onGetAllPlaces()
+      // placesEvents.onGetAllPlaces()
     })
 
     .catch(ui.signInFailure);
