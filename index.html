@@ -51,7 +51,7 @@
 
 
     <!-- Start Feedback Display Message -->
-    <section id="display-message" class="col-12 d-flex justify-content-center bg-warning">
+    <section id="display-message" class="col-12 d-none d-print-block d-flex justify-content-center bg-warning">
       <div id='error-message' class='failure'></div>
       <div id='success-message' class='success'></div>
     </section>
@@ -140,11 +140,26 @@
           </div>
         </div>
 
+        <form id='get-one-place'>
+          <input name="place[_id]" type="text" placeholder="Enter Place Id">
+          <button class="btn btn-primary">Show ID Place</button>
+          <div class="placeId"></div>
+        </form>
+
+        <section>
+          <button id="getOnePlace" class="my-2">Show ID Place</button>
+          <div class="placeId"></div>
+        </section>
+
         <div class="col-8">
           <h3 class="font-weight-normal lert alert-primary" role="alert">Show Places</h3>
           <button id="showPlaces" class="my-2">Show Places</button>
+         
           <div id="placeList"></div>
         </div>
+
+        <div id="deleteDisplay"></div>
+        <div id="place-display"></div>
       </article>
 
 

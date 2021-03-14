@@ -22,8 +22,42 @@ const getAllPlaces = () => {
   })
 }
 
+const getOnePlace = (id) => {
+  return $.ajax({
+    method: 'GET',
+    url: `${config.apiUrl}/places/${id}`,
+    headers: {
+      Authorization: `Bearer ${store.user.token}`
+    }
+  })
+}
+
+const destroyPlace = function (id) {
+  return $.ajax({
+    url: `${config.apiUrl}/places/${id}`,
+    method: 'DELETE',
+    headers: {
+      Authorization: 'Bearer ' + store.user.token
+    }
+  })
+}
+
+const updatePlace = function (id, data) {
+  return $.ajax({
+    url: config.apiUrl + '/places/' + id,
+    method: 'PATCH',
+    headers: {
+      Authorization: `Bearer ${store.user.token}`
+    },
+    data: data
+  })
+}
+
 
 module.exports = {
    getAllPlaces,
-   createPlace
+   createPlace,
+   getOnePlace,
+   destroyPlace,
+   updatePlace
 }

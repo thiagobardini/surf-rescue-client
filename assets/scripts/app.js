@@ -24,13 +24,14 @@ $(() => {
 
   $('#createPlace').on('submit', placeEvents.onCreatePlace)
   $('#showPlaces').on('click', placeEvents.onGetAllPlaces)
-  // $('.accountDestroy-display').on('click', accountEvents.onGetAccounts)
+  $('#getOnePlace').on('click', placeEvents.onGetOnePlace)
   
-  // $('#account-destroy').on('click', '.account-destroy-dynamic', accountEvents.onDestroyAccount)
-  // $('#account-display').on('submit', '.account-update-dynamic', accountEvents.onUpdateAccount)
-   
-   
-    // $('.create-review').on('submit', reviewEvents.onCreateReview)
-  // $('#accountId').on('click', accountEvents.onGetAccountById)
+  
+  $('#get-one-place').on('submit', placeEvents.onShowPlace)
+
+   $('#deleteDisplay').on('click', '.place-destroy-dynamic', placeEvents.onDynamicDestroyPlace)
+
+
+  $('#place-display').on('submit', '.place-update-dynamic', placeEvents.onUpdatePlace)
   
 })

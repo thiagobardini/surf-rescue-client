@@ -1,73 +1,12 @@
 const placeEvents = require("./events.js");
-const store = require('../store')
-
-
-
-// const showAllPlaces = function (placeList) {
-  
-//   let storyHTML2 = "";
-//   for (const place of placeList) {
-//     storyHTML2 += `
-//       <div class="container alert alert-primary" role="alert" >
-//         <p>Place ID: ${place._id}</p>
-//         <p>Local Name: ${place.localName}</p>
-//         <p>Country: ${place.country}</p>
-//         <img src="${place.localImg}" alt="" width="auto" height="300">
-//         <p>Description: ${place.description}</p>
-//         <p>surfLevel: ${place.surfLevel}</p>
-//         <p>Average Cost Day: US$${place.avgCostDay}</p>
-//         <p>Wave Range: ${place.waveRange}ft</p>
-//         <p>Great for: ${place.stance}</p>
-//         <p>Reviews: ${place.reviews}</p>
-//       </div>
-//     `;
-//   }
-//   $("#placeList").html(storyHTML2);
-
-//   // $('.create-review').on('submit', '.review-create-dynamic', reviewEvents.onCreateReview)
-// };
-
-const showAllPlacesSuccess = (response) => {
-
-  console.log(`Response de showAllPlaces ${response}`)
-  response.places.map(place => {
-    $('#placeList').append(`
-        <div class="container alert alert-primary" role="alert" >
-        <p>Place ID: ${place._id}</p>
-        <p>Local Name: ${place.localName}</p>
-        <p>Country: ${place.country}</p>
-        <img src="${place.localImg}" alt="" width="auto" height="300">
-        <p>Description: ${place.description}</p>
-        <p>surfLevel: ${place.surfLevel}</p>
-        <p>Average Cost Day: US$${place.avgCostDay}</p>
-        <p>Wave Range: ${place.waveRange}ft</p>
-        <p>Great for: ${place.stance}</p>
-        <p>Reviews: ${place.reviews}</p>
-      </div>
-      `)
-  })
-  // $('#showPlaces').text('Hide Places')
-  // $('#showPlaces').off('click', placeEvents.onGetAllPlaces)
-  // $('#showPlaces').on('click', hideAllPlaces)
-}
-
-
-// const hideAllPlaces = function () {
-
-//   $("#placeList").html("");
-
-//   $('#showPlaces').text('Show Places');
-//   $('#showPlaces').off('click', hideAllPlaces);
-//   $('#showPlaces').on('click', placeEvents.onGetAllPlaces);
-  
-// };
+const store = require("../store");
 
 const createPlaceSuccess = (response) => {
   store.place = response.place;
   // placesEvents.onGetAllPlaces()
   //   $('#showPlaces').trigger()
-  
-  $('form').trigger('reset')
+
+  $("form").trigger("reset");
   // $("#success-message").text("Thank you for signing in").addClass(".success");
   // $("#   ").trigger("reset");
   // setTimeout(function () {
@@ -76,12 +15,201 @@ const createPlaceSuccess = (response) => {
 };
 
 const createPlaceFailure = (response) => {
-  console.error(response)
-} 
+  console.error(response);
+};
+
+// const getAllPlacesSuccess = (response) => {
+//   $("form").trigger("reset");
+//   const placeList = response.place;
+//   let storyHTML = "";
+//   for (const place of placeList) {
+//     storyHTML += `
+//         <div class="container alert alert-primary" role="alert" onClick="getPlace(${place._id})" >
+//         <a>Place ID: ${place._id}</a>
+//         <p>Local Name: ${place.localName}</p>
+//         <p>Country: ${place.country}</p>
+//         <img src="${place.localImg}" alt="" width="auto" height="300">
+//         <p>Description: ${place.description}</p>
+//         <p>surfLevel: ${place.surfLevel}</p>
+//         <p>Average Cost Day: US$${place.avgCostDay}</p>
+//         <p>Wave Range: ${place.waveRange}ft</p>
+//         <p>Great for: ${place.stance}</p>
+
+//         <br>
+//         <h4>Update your Place</h4>
+//         <form class="place-update-dynamic" data-id=${place._id}>
+//         <input type="text" name="place[localName]" placeholder="New name" required>
+//         <input type="text" name="place[country]" placeholder="New local Name" required>
+//         <input type="text" name="place[localImg]" placeholder="New localImg" required>
+//         <input type="text" name="place[description]" placeholder="New description" required>
+//         <input type="text" name="place[surfLevel]" placeholder="surf Level" required>
+//         <input type="text" name="place[avgCostDay]" placeholder="New avgCostDay" required>
+//         <input type="text" name="place[waveRange]" placeholder="New waveRange" required>
+//         <input type="text" name="place[stance]" placeholder="New stance" required><br>
+//         <button type="submit" class="index-dynamic-button btn btn-primary">Update Account</button>
+//       </form>
+//         <hr>
+//       <button class='account-destroy-dynamic btn btn-primary' data-id=${place._id}>Delete Account</button>
+//       </div>  
+
+//         <br>
+//         <button class='place-destroy-dynamic index-dynamic-button btn btn-primary' data-id=${response._id}>Delete Place</button>
+
+//       </div>
+
+//       `;
+//   }
+//   // $('#showPlaces').text('Hide Places')
+//   // $('#showPlaces').off('click', placeEvents.onGetAllPlaces)
+//   $("#placeList").toggle();
+//   // if show : hide
+//   // $('#showPlaces').on('click', hideAllPlaces)
+//   $("#place-display").show();
+//   $("#place-list").html(storyHTML);
+// };
+
+const getAllPlacesSuccess = (response) => {
+  response.places.map(place => {
+    $('#placeList').append(`
+        <div class="container alert alert-primary" role="alert" onClick="getPlace(${place._id})" >
+        <a>Place ID: ${place._id}</a>
+        <p>Local Name: ${place.localName}</p>
+        <p>Country: ${place.country}</p>
+        <img src="${place.localImg}" alt="" width="auto" height="300">
+        <p>Description: ${place.description}</p>
+        <p>surfLevel: ${place.surfLevel}</p>
+        <p>Average Cost Day: US$${place.avgCostDay}</p>
+        <p>Wave Range: ${place.waveRange}ft</p>
+        <p>Great for: ${place.stance}</p>
+
+        <br>
+        <h4>Update your Place</h4>
+        <form class="place-update-dynamic" data-id=${place._id}>
+        <input type="text" name="place[localName]" placeholder="New name" required>
+        <input type="text" name="place[country]" placeholder="New local Name" required>
+        <input type="text" name="place[localImg]" placeholder="New localImg" required>
+        <input type="text" name="place[description]" placeholder="New description" required>
+        <input type="text" name="place[surfLevel]" placeholder="surf Level" required>
+        <input type="text" name="place[avgCostDay]" placeholder="New avgCostDay" required>
+        <input type="text" name="place[waveRange]" placeholder="New waveRange" required>
+        <input type="text" name="place[stance]" placeholder="New stance" required><br>
+        <button type="submit" class="index-dynamic-button btn btn-primary">Update Account</button>
+      </form>
+        <hr>
+      <button class='account-destroy-dynamic btn btn-primary' data-id=${place._id}>Delete Account</button>
+      </div>
+
+        <br>
+        <button class='place-destroy-dynamic index-dynamic-button btn btn-primary' data-id=${response._id}>Delete Place</button>
+
+      </div>
+
+      `)
+  })
+  // $('#showPlaces').text('Hide Places')
+  // $('#showPlaces').off('click', placeEvents.onGetAllPlaces)
+  $('#placeList').toggle()
+  // if show : hide
+  // $('#showPlaces').on('click', hideAllPlaces)
+    $('#account-display').show()
+  $('#account-display').html(storyHTML)
+}
+
+// function getPlace(id) {
+//   $('#placeList').html()
+//   getOnePlace(id).then( response => {
+//     $('#placeList').append(`
+//         <div class="container alert alert-primary" role="alert"  >
+//         <p>Place ID: ${response.place._id}</p>
+//         <p>Local Name: ${response.place.localName}</p>
+//         <p>Country: ${response.place.country}</p>
+//         <img src="${response.place.localImg}" alt="" width="auto" height="300">
+//         <p>Description: ${response.place.description}</p>
+//         <p>surfLevel: ${response.place.surfLevel}</p>
+//         <p>Average Cost Day: US$${response.place.avgCostDay}</p>
+//         <p>Wave Range: ${response.place.waveRange}ft</p>
+//         <p>Great for: ${response.place.stance}</p>
+//         <p>Reviews: ${response.place.reviews}</p>
+//       </div>
+//       `)
+//   })
+// }
+
+// const getOnePlacesSuccess = (response) => {
+//     $('.placeId').html('');
+//     $('.placeId').append(`
+//         <div class="container alert alert-primary" role="alert" >
+//         <p>Place ID: ${response.place._id}</p>
+//         <p>Local Name: ${response.place.localName}</p>
+//         <p>Country: ${response.place.country}</p>
+//         <img src="${response.place.localImg}" alt="" width="auto" height="300">
+//         <p>Description: ${response.place.description}</p>
+//         <p>surfLevel: ${response.place.surfLevel}</p>
+//         <p>Average Cost Day: US$${response.place.avgCostDay}</p>
+//         <p>Wave Range: ${response.place.waveRange}ft</p>
+//         <p>Great for: ${response.place.stance}</p>
+//         <p>Reviews: ${response.place.reviews}</p>
+//       </div>
+//     `
+//     )
+
+// }
+
+// const getOnePlaceFailure = (response) => {
+//     console.error(response)
+// }
+
+// Get one ID
+const showPlaceSuccess = function (response) {
+  $("form").trigger("reset");
+  $(".placeId").html("");
+  const placeInfo = response.place;
+  $(".placeId").append(`      
+  <div class="container alert alert-primary" role="alert" >
+    <p>Place ID: ${response.place._id}</p>
+    <p>Local Name: ${response.place.localName}</p>
+    <p>Country: ${response.place.country}</p>
+    <img src="${response.place.localImg}" alt="" width="auto" height="300">
+    <p>Description: ${response.place.description}</p>
+    <p>surfLevel: ${response.place.surfLevel}</p>
+    <p>Average Cost Day: US$${response.place.avgCostDay}</p>
+    <p>Wave Range: ${response.place.waveRange}ft</p>
+    <p>Great for: ${response.place.stance}</p>
+    <p>Reviews: ${response.place.reviews}</p>
+  </div>
+  `);
+};
+
+const showPlaceFailure = function () {
+  $("form").trigger("reset");
+
+  $("#serror-message")
+    .text("Sorry! Something wasn't right, please try again.")
+    .addClass(".failure");
+  $("#   ").trigger("reset");
+  setTimeout(function () {
+    $("#error-message").text("").removeClass("failure");
+  }, 4000);
+};
+
+const onDestroyPlaceSuccess = function () {
+  $("form").trigger("reset");
+
+  $("#success-message")
+    .text("Your place has been deleted")
+    .addClass(".success");
+  $("#   ").trigger("reset");
+  setTimeout(function () {
+    $("#success-message").text("").removeClass("success");
+  }, 4000);
+};
 
 module.exports = {
-  showAllPlacesSuccess,
-  
+  getAllPlacesSuccess,
   createPlaceSuccess,
-  createPlaceFailure
+  createPlaceFailure,
+  showPlaceSuccess,
+  onDestroyPlaceSuccess,
+  // getOnePlaceFailure,
+  // getOnePlacesSuccess,
 };
