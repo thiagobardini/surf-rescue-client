@@ -13,27 +13,17 @@ const onCreatePlace = (event) => {
     .catch(ui.createPlaceFailure)
 }
 
-const onGetAllPlaces = (event) => {
+const onGetAllPlaces = () => {
   api.getAllPlaces()
-    .then(ui.getAllPlacesSuccess)
-    .catch(ui.showPlacesFailure)
+    .then(ui.showAllPlacesSuccess)
+    .catch(ui.showAllPlacesFailure)
 }
 
-
-// const onGetOnePlace = (id) => {
-//   const placeId = id;
-//   api.getOnePlace(placeId)
-//     .then(ui.showOnePlacesSuccess)
-//     .catch(ui.getOnePlaceFailure)
-// }
-
-const onShowPlace = (id) => {
+const onGetOnePlace = (event) => {
   event.preventDefault()
   const form = event.target
-  const placeId = place.id
-  // placeId = form
   const data = getFormFields(form)
-  api.getOnePlace(data)
+  api.getOnePlace(data.place._id)
     .then(ui.showPlaceSuccess)
     .catch(ui.showPlaceFailure)
 }
@@ -43,10 +33,8 @@ const onDynamicDestroyPlace = function (event) {
   const id = $(deleteBtn).data('id')
   api.destroyPlace(id)
     .then(ui.onDestroyPlaceSuccess)
-    .catch(ui.onPlaceFailure)
+    .catch(ui.onDestroyFailure)
 }
-
-
 
 const onUpdatePlace = function (event) {
   event.preventDefault();
@@ -63,10 +51,8 @@ const onUpdatePlace = function (event) {
 module.exports = {
   onGetAllPlaces,
   onCreatePlace,
-  //  onGetOnePlace,
+  onGetOnePlace,
   onDynamicDestroyPlace,
-  onShowPlace,
-
   onUpdatePlace
 
 }

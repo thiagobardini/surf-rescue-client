@@ -14,24 +14,16 @@ $(() => {
   $('#signOutHide').hide()
   $('#hideContent').hide()
 
-
   $('#sign-up').on('submit', authEvents.onSignUp)
   $('#sign-in').on('submit', authEvents.onSignIn)
   $('#change-password').on('submit', authEvents.onChangePassword)
   $('#sign-out').on('click', authEvents.onSignOut)
-  // $('#createAccount').on('submit', accountEvents.onCreateAccount)
-  // $('#showAccounts').on('click', accountEvents.onGetAccounts)
 
   $('#createPlace').on('submit', placeEvents.onCreatePlace)
   $('#showPlaces').on('click', placeEvents.onGetAllPlaces)
-  $('#getOnePlace').on('click', placeEvents.onGetOnePlace)
-  
-  
-  $('#get-one-place').on('submit', placeEvents.onShowPlace)
+  $('#get-one-place').on('submit', placeEvents.onGetOnePlace)
 
-   $('#deleteDisplay').on('click', '.place-destroy-dynamic', placeEvents.onDynamicDestroyPlace)
+  $('#placeList').on('submit','.place-update-dynamic', placeEvents.onUpdatePlace)
+  $('#placeList').on('click', '.place-destroy-dynamic', placeEvents.onDynamicDestroyPlace)
 
-
-  $('#place-display').on('submit', '.place-update-dynamic', placeEvents.onUpdatePlace)
-  
 })

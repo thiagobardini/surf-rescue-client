@@ -14,7 +14,7 @@ const createPlace = (data) => {
 
 const getAllPlaces = () => {
   return $.ajax({
-    url: `${config.apiUrl}/places/`,
+    url: `${config.apiUrl}/places`,
     method: 'GET',
     headers: {
       Authorization: `Bearer ${store.user.token}`
@@ -44,7 +44,7 @@ const destroyPlace = function (id) {
 
 const updatePlace = function (id, data) {
   return $.ajax({
-    url: config.apiUrl + '/places/' + id,
+    url: `${config.apiUrl}/places/${id}`,
     method: 'PATCH',
     headers: {
       Authorization: `Bearer ${store.user.token}`
