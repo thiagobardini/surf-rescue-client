@@ -50,12 +50,12 @@
       </div>
 
 
-    <!-- Start Feedback Display Message -->
-    <section id="display-message" class="col-12 d-none d-print-block d-flex justify-content-center bg-warning">
-      <div id='error-message' class='failure'></div>
-      <div id='success-message' class='success'></div>
-    </section>
-    <!-- End Feedback Display Message -->
+      <!-- Start Feedback Display Message -->
+      <section id="display-message" class="col-12 d-none d-print-block d-flex justify-content-center bg-warning">
+        <div id='error-message' class='failure'></div>
+        <div id='success-message' class='success'></div>
+      </section>
+      <!-- End Feedback Display Message -->
 
       <div class="col-md-6">
         <form id='sign-up' class="form-signin">
@@ -99,61 +99,104 @@
 
     </div>
 
-      <article id="hideContent">
+    <article id="hideContent">
 
+      <div class="row">
+        <div class="col">
+          <div class="mx-auto w-70 p-3 text-white text-center">
+            <h3 class="alert alert-primary col text-center" role="alert">Create Your Favorite Surf Places</h3>
+            <!-- Start modal create place -->
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+              Create a Place
+            </button>
 
-        <div class="container">
-          <div class="row justify-content-center">
-            <div class="col-md-6">
-              <form id='createPlace'>
-                <h1 class="h3 font-weight-normal ">Create Place</h1>
+            <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+              aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalCenterTitle">Create Place</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <form id='createPlace'>
+                      <label for="place[localName]" class="sr-only">Local Name</label>
+                      <input type="text" name='place[localName]' class="form-control" placeholder="Type your Local name"
+                        required>
 
-                <label for="place[localName]" class="sr-only">Local Name</label>
-                <input type="text" name='place[localName]' class="form-control" placeholder="Type your Local name"
-                  required>
+                      <label for="place[country]" class="sr-only">country</label>
+                      <input type="text" name='place[country]' class="form-control" placeholder="country" required>
 
-                <label for="place[country]" class="sr-only">country</label>
-                <input type="text" name='place[country]' class="form-control" placeholder="country" required>
+                      <label for="place[localImg]" class="sr-only">Add url image</label>
+                      <input type="text" name='place[localImg]' class="form-control" placeholder="Add url image"
+                        required>
 
-                <label for="place[localImg]" class="sr-only">Add url image</label>
-                <input type="text" name='place[localImg]' class="form-control" placeholder="Add url image" required>
+                      <label for="place[description]" class="sr-only">Description</label>
+                      <input type="text" name='place[description]' class="form-control" placeholder="description"
+                        required>
 
-                <label for="place[description]" class="sr-only">Description</label>
-                <input type="text" name='place[description]' class="form-control" placeholder="description" required>
+                      <label for="place[surfLevel]" class="sr-only">Surf Level</label>
+                      <input type="text" name='place[surfLevel]' class="form-control" placeholder="surfLevel" required>
 
-                <label for="place[surfLevel]" class="sr-only">Surf Level</label>
-                <input type="text" name='place[surfLevel]' class="form-control" placeholder="surfLevel" required>
+                      <label for="place[avgCostDay]" class="sr-only">Average Cost Day</label>
+                      <input type="text" name='place[avgCostDay]' class="form-control" placeholder="Average Cost Day"
+                        required>
 
-                <label for="place[avgCostDay]" class="sr-only">Average Cost Day</label>
-                <input type="text" name='place[avgCostDay]' class="form-control" placeholder="Average Cost Day"
-                  required>
+                      <label for="place[waveRange]" class="sr-only">wave Range</label>
+                      <input type="text" name='place[waveRange]' class="form-control" placeholder="waveRange" required>
 
-                <label for="place[waveRange]" class="sr-only">wave Range</label>
-                <input type="text" name='place[waveRange]' class="form-control" placeholder="waveRange" required>
+                      <label for="place[stance]" class="sr-only">Average Cost Day</label>
+                      <input type="text" name='place[stance]' class="form-control" placeholder="stance" required>
 
-                <label for="place[stance]" class="sr-only">Average Cost Day</label>
-                <input type="text" name='place[stance]' class="form-control" placeholder="stance" required>
-
-                <button class="btn btn-lg btn-dark btn-block" type="submit">Create place</button>
-              </form>
+                      <button class="btn btn-lg btn-dark btn-block" type="submit">Create place</button>
+                    </form>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  </div>
+                </div>
+              </div>
             </div>
+            <!-- End modal create place -->
+
+            <!-- Start modal show id place -->
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter1">
+              Show ID Place
+            </button>
+            <button type="button" id="showPlaces" class="btn btn-primary">Show Places</button>
+
+            <div class="modal fade" id="exampleModalCenter1" tabindex="-1" role="dialog"
+              aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                  <!-- <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalCenterTitle">Create Place</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div> -->
+                  <div class="modal-body">
+                    <form id='get-one-place'>
+                      <input name="place[_id]" type="text" placeholder="Enter Place Id">
+                      <button class="btn btn-primary">Show ID Place</button>
+                      <div class="placeId"></div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- End modal show id place -->
+
+            <!-- <h3 class="alert alert-primary col text-center" role="alert">Show Places</h3>
+          <button type="button"  id="showPlaces" class="btn btn-primary">Show Places</button> -->
+            <div id="placeList"></div>
           </div>
         </div>
+      </div>
 
-        <form id='get-one-place'>
-          <input name="place[_id]" type="text" placeholder="Enter Place Id">
-          <button class="btn btn-primary">Show ID Place</button>
-          <div class="placeId"></div>
-        </form>
-
-        <div class="col-8">
-          <h3 class="font-weight-normal lert alert-primary" role="alert">Show Places</h3>
-          <button id="showPlaces" class="my-2">Show Places</button>
-
-          <div id="placeList"></div>
-        </div>
-
-      </article>
+    </article>
 
 
 

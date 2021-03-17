@@ -5,7 +5,7 @@ const createPlaceSuccess = (response) => {
   store.place = response.place;
   // placesEvents.onGetAllPlaces()
   //   $('#showPlaces').trigger()
-
+  $('#showPlaces').text('Click to Refresh the Places')
   $("form").trigger("reset");
   // $("#success-message").text("Thank you for signing in").addClass(".success");
   // $("#   ").trigger("reset");
@@ -19,6 +19,8 @@ const createPlaceFailure = (response) => {
 };
 
 const showAllPlacesSuccess = (response) => {
+  console.log(response)
+  $('#showPlaces').text('Show Places')
   $("form").trigger("reset")
   $('#placeList').html("")
   let storeHTML = ""
@@ -46,19 +48,15 @@ const showAllPlacesSuccess = (response) => {
             <input type="text" name="place[avgCostDay]" placeholder="New avgCostDay" required>
             <input type="text" name="place[waveRange]" placeholder="New waveRange" required>
             <input type="text" name="place[stance]" placeholder="New stance" required><br>
-            <button type="submit" class="btn btn-primary">Update Place</button>
+            <button type="submit" class="index-dynamic-button btn btn-primary">Update Place</button>
           </form>
           <hr>
-          <button class='place-destroy-dynamic btn btn-primary' data-id=${place._id}>Delete Place</button>
+          <button class='place-destroy-dynamic index-dynamic-button btn btn-primary' data-id=${place._id}>Delete Place</button>
         </div>
       `
   })
   $('#placeList').html(storeHTML)
-  // $('#showPlaces').text('Hide Places')
-  // $('#showPlaces').off('click', placeEvents.onGetAllPlaces)
-  // $('#placeList').toggle()
-  // if show : hide
-  // $('#showPlaces').on('click', hideAllPlaces)
+  
 }
 
 const showAllPlacesFailure = function () {
