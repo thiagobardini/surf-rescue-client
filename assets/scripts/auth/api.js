@@ -18,9 +18,6 @@ const signIn = function (data) {
 }
 
 const changepw = function (data) {
-   console.log('data is ', data)
-   console.log('store is ', store)
-
    return $.ajax({
       method: 'PATCH',
       url: config.apiUrl + '/change-password',
@@ -32,9 +29,6 @@ const changepw = function (data) {
 }
 
 const signOut = function (data) {
-   console.log('data is ', data)
-   console.log('store is ', store)
-
    return $.ajax({
       method: 'DELETE',
       url: config.apiUrl + '/sign-out',

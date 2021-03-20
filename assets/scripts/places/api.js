@@ -53,7 +53,6 @@ const updatePlace = function (id, data) {
   })
 }
 
-
 module.exports = {
    getAllPlaces,
    createPlace,

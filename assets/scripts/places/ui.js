@@ -25,54 +25,53 @@ const createPlaceFailure = (response) => {
 };
 
 const showAllPlacesSuccess = (response) => {
-  console.log(response);
   $("#showPlaces").text("Show Places");
   $("#placeList").html("");
   let storeHTML = "";
   response.places.forEach((place) => {
     storeHTML += `
-    <div class="container alert alert-primary" role="alert">
-  <a>Place ID: ${place._id}</a>
-  <p>Local Name: ${place.localName}</p>
-  <p>Country: ${place.country}</p>
-  <p>Description: ${place.description}</p>
-  <p>surfLevel: ${place.surfLevel}</p>
-  <p>Average Cost Day: US$${place.avgCostDay}</p>
-  <p>Wave Range: ${place.waveRange}ft</p>
-  <br>
-  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter2">
-    Update your Place
-  </button>
-  <button class='place-destroy-dynamic index-dynamic-button btn btn-primary' data-id=${place._id}>Delete Place</button>
+      <div class="container alert alert-primary" role="alert">
+    <a>Place ID: ${place._id}</a>
+    <p>Local Name: ${place.localName}</p>
+    <p>Country: ${place.country}</p>
+    <p>Description: ${place.description}</p>
+    <p>surfLevel: ${place.surfLevel}</p>
+    <p>Average Cost Day: US$${place.avgCostDay}</p>
+    <p>Wave Range: ${place.waveRange}ft</p>
+    <br>
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter2">
+      Update your Place
+    </button>
+    <button class='place-destroy-dynamic index-dynamic-button btn btn-primary' data-id=${place._id}>Delete Place</button>
 
-  <div class="modal fade" id="exampleModalCenter2" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
-    aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Show Id place</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
+    <div class="modal fade" id="exampleModalCenter2" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+      aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
-          <div class="modal-body">
-            <form class="place-update-dynamic" data-id=${place._id}>
-              <input type="text" name="place[localName]" placeholder="New name" required>
-              <input type="text" name="place[country]" placeholder="New local Name" required>
-              <input type="text" name="place[description]" placeholder="New description" required>
-              <input type="text" name="place[surfLevel]" placeholder="surf Level" required>
-              <input type="text" name="place[avgCostDay]" placeholder="New avgCostDay" required>
-              <input type="text" name="place[waveRange]" placeholder="New waveRange" required>
-              <button type="submit" class="index-dynamic-button btn btn-primary" data-dismiss="modal">Update
-                Place</button>
-            </form>
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Show Id place</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-content">
+            <div class="modal-body">
+              <form class="place-update-dynamic" data-id=${place._id}>
+                <input type="text" name="place[localName]" placeholder="New name" required>
+                <input type="text" name="place[country]" placeholder="New local Name" required>
+                <input type="text" name="place[description]" placeholder="New description" required>
+                <input type="text" name="place[surfLevel]" placeholder="surf Level" required>
+                <input type="text" name="place[avgCostDay]" placeholder="New avgCostDay" required>
+                <input type="text" name="place[waveRange]" placeholder="New waveRange" required>
+                <button type="submit" class="index-dynamic-button btn btn-primary" data-dismiss="modal">Update
+                  Place</button>
+              </form>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-</div>
+    </div>
     `;
   });
 
