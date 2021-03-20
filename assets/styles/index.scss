@@ -6,6 +6,11 @@ $font-color: $light;
 
 body {
    background-color: $body-bg-color;
+   color: #000000;
+
+   h5 {
+      color: #000000;
+   }
 }
 
 .failure {
@@ -18,6 +23,11 @@ body {
 
 #logo{
    width: 50%;
+}
+
+#displayFeedbackId {
+   z-index: 99999;
+   color: green;
 }
 
 @media only screen and (max-width: 769px) {

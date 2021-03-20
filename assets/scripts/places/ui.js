@@ -3,28 +3,34 @@ const store = require("../store");
 
 const createPlaceSuccess = (response) => {
   store.place = response.place;
-  // placesEvents.onGetAllPlaces()
-  //   $('#showPlaces').trigger()
-  $('#showPlaces').text('Click to Refresh the Places')
+  $("#showPlaces").text("Click to Refresh the Places");
   $("form").trigger("reset");
-  // $("#success-message").text("Thank you for signing in").addClass(".success");
-  // $("#   ").trigger("reset");
-  // setTimeout(function () {
-  //   $("#success-message").text("").removeClass("success");
-  // }, 4000);
+  $('#exampleModalCenter').modal('hide')
+  $("#success-message")
+    .text("Your place has been successfully created!")
+    .addClass(".success");
+  setTimeout(function () {
+    $("#success-message").text("").addClass("success");
+  }, 4000);
+
 };
 
 const createPlaceFailure = (response) => {
-  console.error(response);
+  $("form").trigger("reset");
+  $("#error-message")
+    .text("Display places failed. Please try again!")
+    .addClass(".failure");
+  setTimeout(function () {
+    $("#error-message").text("").addClass("failure");
+  }, 4000);
 };
 
 const showAllPlacesSuccess = (response) => {
-  console.log(response)
-  $('#showPlaces').text('Show Places')
-  $("form").trigger("reset")
-  $('#placeList').html("")
-  let storeHTML = ""
-  response.places.forEach(place => {
+  console.log(response);
+  $("#showPlaces").text("Show Places");
+  $("#placeList").html("");
+  let storeHTML = "";
+  response.places.forEach((place) => {
     storeHTML += `
         <div class="container alert alert-primary" role="alert">
           <a>Place ID: ${place._id}</a>
@@ -36,7 +42,6 @@ const showAllPlacesSuccess = (response) => {
           <p>Average Cost Day: US$${place.avgCostDay}</p>
           <p>Wave Range: ${place.waveRange}ft</p>
           <p>Great for: ${place.stance}</p>
-
           <br>
           <h4>Update your Place</h4>
           <form class="place-update-dynamic" data-id=${place._id}>
@@ -53,29 +58,49 @@ const showAllPlacesSuccess = (response) => {
           <hr>
           <button class='place-destroy-dynamic index-dynamic-button btn btn-primary' data-id=${place._id}>Delete Place</button>
         </div>
-      `
-  })
-  $('#placeList').html(storeHTML)
-  
-}
+      `;
+  });
+  $("#placeList").html(storeHTML);
+
+  $("#success-message")
+    .text("Your places have been successfully displayed!")
+    .addClass(".success");
+  setTimeout(function () {
+    $("#success-message").text("").addClass("success");
+  }, 4000);
+
+  $(document).ready(function () {
+    $("#hidePlaces").click(function () {
+      $("#placeList").hide();
+      hidePlacesSuccess();
+    });
+    $("#showPlaces").click(function () {
+      $("#placeList").show();
+    });
+  });
+};
+
+const hidePlacesSuccess = () => {
+  $("#success-message")
+    .text("Your places have been successfully hide!")
+    .addClass(".success");
+  setTimeout(function () {
+    $("#success-message").text("").addClass("success");
+  }, 4000);
+};
 
 const showAllPlacesFailure = function () {
-  $("form").trigger("reset");
-
-  $("#serror-message")
+  $("#error-message")
     .text("Sorry! Something wasn't right, please try again.")
     .addClass(".failure");
-  $("#   ").trigger("reset");
   setTimeout(function () {
-    $("#error-message").text("").removeClass("failure");
+    $("#error-message").text("").addClass("failure");
   }, 4000);
 };
 
 // Get one ID
 const showPlaceSuccess = function (response) {
   $("form").trigger("reset");
-  // $(".placeId").html("");
-  // const placeInfo = response.place;
   $(".placeId").html(`
   <div class="container alert alert-primary" role="alert" >
     <p>Place ID: ${response.place._id}</p>
@@ -87,41 +112,64 @@ const showPlaceSuccess = function (response) {
     <p>Average Cost Day: US$${response.place.avgCostDay}</p>
     <p>Wave Range: ${response.place.waveRange}ft</p>
     <p>Great for: ${response.place.stance}</p>
-    <p>Reviews: ${response.place.reviews}</p>
+  </div>
+  <div id="displayFeedbackId"> 
+    <p>Your places have been successfully show!</p>
   </div>
   `);
+  setTimeout(function () {
+    $("#displayFeedbackId").text("").addClass("success");
+  }, 4000);
+
 };
 
-const showPlaceFailure = (response) => {
-    console.error(response)
-}
 
+const showPlaceFailure = (response) => {
+  $("#error-message")
+    .text("Sorry! Something wasn't right, please try again.")
+    .addClass(".failure");
+  setTimeout(function () {
+    $("#error-message").text("").addClass("failure");
+  }, 4000);
+};
 
 const onDestroyPlaceSuccess = function () {
-  $('#placeList').html("")
-  $("#success-message").text("Place has been destroyed successfully").addClass(".success");
+  $("#placeList").html("");
+  $("#success-message")
+    .text("Place has been destroyed successfully")
+    .addClass(".success");
   setTimeout(function () {
-    $("#success-message").text("").removeClass("success");
+    $("#success-message").text("").addClass("success");
   }, 4000);
 };
 
 const onDestroyFailure = (response) => {
-  console.error(response)
-}
-
+  $("#error-message")
+    .text("Sorry! Something wasn't right, please try again.")
+    .addClass(".failure");
+  setTimeout(function () {
+    $("#error-message").text("").addClass("failure");
+  }, 4000);
+};
 
 const onUpdatePlaceSuccess = function () {
-  $('#placeList').html("")
-  $("#success-message").text("Place has been updated successfully").addClass(".success");
+  $("#placeList").html("");
+  $("#success-message")
+    .text("Place has been updated successfully")
+    .addClass(".success");
   setTimeout(function () {
-    $("#success-message").text("").removeClass("success");
+    $("#success-message").text("").addClass("success");
   }, 4000);
 };
 
 const onUpdatePlaceFailure = (response) => {
-  console.error(response)
-}
-
+  $("#error-message")
+    .text("Sorry! Something wasn't right, please try again.")
+    .addClass(".failure");
+  setTimeout(function () {
+    $("#error-message").text("").addClass("failure");
+  }, 4000);
+};
 
 module.exports = {
   showAllPlacesSuccess,
@@ -133,5 +181,6 @@ module.exports = {
   onDestroyPlaceSuccess,
   onDestroyFailure,
   onUpdatePlaceSuccess,
-  onUpdatePlaceFailure
+  onUpdatePlaceFailure,
+  hidePlacesSuccess,
 };
