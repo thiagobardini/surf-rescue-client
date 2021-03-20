@@ -5,7 +5,7 @@ const signUpSuccess = function (response) {
   // this resets (clears) every form on the page
   $('form').trigger('reset')
   setTimeout(function () {
-    $('#success-message').text('').removeClass('success')
+    $('#success-message').text('').addClass('success')
   }, 4000)
 }
 
@@ -14,7 +14,7 @@ const signUpFailure = function (response) {
   $('#sign-up').trigger('reset')
 
   setTimeout(function () {
-    $('#error-message').text('').removeClass('failure')
+    $('#error-message').text('').addClass('failure')
   }, 4000)
 }
 
@@ -30,7 +30,7 @@ const signInSuccess = function (response) {
   // this resets (clears) every form on the page
   $('form').trigger('reset')
   setTimeout(function () {
-    $('#success-message').text('').removeClass('success')
+    $('#success-message').text('').addClass('success')
   }, 4000)
 }
 
@@ -39,7 +39,7 @@ const signInFailure = function (response) {
   $('#sign-in').trigger('reset')
 
   setTimeout(function () {
-    $('#error-message').text('').removeClass('failure')
+    $('#error-message').text('').addClass('failure')
   }, 4000)
 }
 
@@ -47,7 +47,7 @@ const changePasswordSuccess = function (response) {
   $('#success-message').text('Password successfully changed').addClass('.success')
   $('#change-password').trigger('reset')
   setTimeout(function () {
-  $('#success-message').text('').removeClass('success')
+  $('#success-message').text('').addClass('success')
   }, 4000)
 }
 
@@ -56,7 +56,7 @@ const changePasswordFailure = function (response) {
   $('#change-password').trigger('reset')
 
   setTimeout(function () {
-    $('#error-message').text('').removeClass('failure')
+    $('#error-message').text('').addClass('failure')
   }, 4000)
 }
 
@@ -74,7 +74,7 @@ const signOutSuccess = function () {
   $('#success-message').text('See you soon!').addClass('.success')
   $('form').trigger('reset')
   setTimeout(function () {
-    $('#success-message').text('').removeClass('success')
+    $('#success-message').text('').addClass('success')
   }, 4000)
 }
 
@@ -82,7 +82,7 @@ const signOutFailure = function (response) {
   $('#error-message').text('Sign out failed, try again').addClass('.failure')
   
   setTimeout(function () {
-    $('#error-message').text('').removeClass('failure')
+    $('#error-message').text('').addClass('failure')
   }, 4000)
 }
 
