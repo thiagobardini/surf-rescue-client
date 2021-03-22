@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Surf Rescue</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Do not add `link` tags-->
+  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+
+  <!-- Do not add `script` tags-->
+  <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
+  <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
+</head>
+
+<body>
+  <main class="container">
+    <div id="signOutHide" class="col-xl-12">
+      <button id="signOutButton" type="button" class="btn btn-outline-dark" data-toggle="modal"
+        data-target=".bd-example-modal-sm">Menu</button>
+
+      <div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-auto">
+          <div class="modal-content px-3">
+            <form id='change-password'>
+              <h5 class="font-weight-normal mt-2">Change Your Password</h5>
+              <div class="form-group">
+                <input type="password" name='passwords[old]' class="form-control" placeholder="Current Password"
+                  required>
+              </div>
+              <div class="form-group">
+                <input type="password" name='passwords[new]' class="form-control" placeholder="New Password" required>
+              </div>
+              <button type="submit" class="btn btn-primary mb-2">Change Password</button>
+            </form>
+            <div id="sign-out" class="modal-footer">
+              <button type="button" class="btn btn-secondary ml-auto" data-dismiss="modal">Sing-Out</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- End modal -->
+
+    <div class="row text-center py-4">
+      <div class="col-12">
+        <img id="logo" src="https://i.imgur.com/s7xFfWt.jpg" class="rounded mx-auto d-block" alt="Responsive image">
+      </div>
+      <!-- Start Feedback Display Message -->
+      <section id="display-message" class="col-12 d-none d-print-block d-flex justify-content-center bg-warning">
+        <div id='error-message' class='failure'></div>
+        <div id='success-message' class='success'></div>
+      </section>
+      <!-- End Feedback Display Message -->
+      <div class="col-md-6">
+        <form id='sign-up' class="form-signin">
+          <h1 class="h3 mb-3 font-weight-normal">Sign up</h1>
+          <label for="credentials[email]" class="sr-only">Email address</label>
+          <input type="email" name='credentials[email]' class="form-control" placeholder="Email address" required
+            autofocus>
+          <label for="credentials[password]" class="sr-only">Password</label>
+          <input type="password" name='credentials[password]' class="form-control" placeholder="Password" required>
+          <label for="credentials[password_confirmation]" class="sr-only">Confirm password</label>
+          <input type="password" name='credentials[password_confirmation]' class="form-control" placeholder="Password"
+            required>
+          <button class="btn btn-lg btn-primary btn-block" type="submit">Sign up</button>
+        </form>
+      </div>
+      <div class="col-md-6">
+        <form id='sign-in' class="form-signin">
+          <h1 class="h3 mb-3 font-weight-normal ">Sign in</h1>
+          <label for="credentials[email]" class="sr-only">Email address</label>
+          <input type="email" name='credentials[email]' class="form-control" placeholder="Email address" required
+            autofocus>
+          <label for="credentials[password]" class="sr-only">Password</label>
+          <input type="password" name='credentials[password]' class="form-control" placeholder="Password" required>
+          <div class="checkbox mb-2">
+          </div>
+          <button class="btn btn-lg btn-dark btn-block" type="submit">Sign in</button>
+        </form>
+      </div>
+    </div>
+
+    <article id="hideContent">
+      <div class="row">
+        <div class="col">
+          <div class="mx-auto w-70 p-3 text-white text-center">
+            <h3 class="alert alert-primary col text-center" role="alert">Create Your Favorite Surf Places</h3>
+            <!-- Start modal create place -->
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+              Create a Place
+            </button>
+            <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+              aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Create Place</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <form id='createPlace'>
+                      <label for="place[localName]" class="sr-only">Local Name</label>
+                      <input type="text" name='place[localName]' class="form-control" placeholder="Type your Local name"
+                        required>
+
+                        <label for="place[country]" class="sr-only">Country</label>
+                      <input type="text" name='place[country]' class="form-control" placeholder="country" required>
+
+                      <label for="place[description]" class="sr-only">Description</label>
+                      <input type="text" name='place[description]' class="form-control" placeholder="description"
+                        required>
+
+                        <label for="place[surfLevel]" class="sr-only">Surf Level</label>
+                      <input type="text" name='place[surfLevel]' class="form-control" placeholder="surfLevel" required>
+
+                      <label for="place[avgCostDay]" class="sr-only">Average Cost Day</label>
+                      <input type="text" name='place[avgCostDay]' class="form-control" placeholder="Average Cost Day"
+                        required>
+                      <label for="place[waveRange]" class="sr-only">Wave Range</label>
+                      <input type="text" name='place[waveRange]' class="form-control" placeholder="waveRange" required>
+
+                      <button class="btn btn-lg btn-primary  btn-block" type="submit">Create Place</button>
+                    </form>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+            <!-- End modal create place -->
+
+            <!-- Start modal show id place -->
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter1">
+              Show ID Place
+            </button>
+            <button type="button" id="showPlaces" class="btn btn-primary">Show Places</button>
+            <button type="button" id="hidePlaces" class="btn btn-primary">Hide Places</button>
+
+            <div class="modal fade" id="exampleModalCenter1" tabindex="-1" role="dialog"
+              aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Show Id place</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-content">
+                    <div class="modal-body">
+                      <form id='get-one-place'>
+                        <input name="place[_id]" type="text" placeholder="Enter Place Id">
+                        <button class="btn btn-primary">Show ID Place</button>
+                        <div class="placeId"></div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div id="placeList"></div>
+    </article>
+    <!-- Start footer -->
+    <div id="footer" class="col-12 d-flex justify-content-center">
+      <p class="mt-5 mb-3 text-muted"><a href="https://github.com/thiagobardini">Thiago Bardini</a> &copy; 2021</p>
+    </div>
+    <!-- End footer -->
+  </main>
+</body>
+
+</html>
